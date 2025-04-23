@@ -1,3 +1,8 @@
 :root {
     --customLinkBlue: #0000EE;
   }
+
+  @font-face {
+    font-family: 'MyCustomGothicFont';
+    src: url('/fonts/OldEnglishGothicPixelRegular.ttf') format('truetype');
+  }
