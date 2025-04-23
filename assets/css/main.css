@@ -2,6 +2,11 @@
     --customLinkBlue: #0000EE;
   }
 
+   /* added this to ensure viewport cannot be scrolled sideways */
+  body {
+    overflow-x: hidden;
+  }
+
   @font-face {
     font-family: 'MyCustomGothicFont';
     src: url('/fonts/OldEnglishGothicPixelRegular.ttf') format('truetype');

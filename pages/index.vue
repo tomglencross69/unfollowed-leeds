@@ -33,19 +33,20 @@
   
   <style scoped>
   .wrapper {
-    max-width: 800px;
-    margin: auto;
     font-family: "Times New Roman", serif;
-    padding: 2rem;
+    margin: 2rem;
+    border: solid black;
   }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
+    border: solid black;
   }
   .title {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 2rem;
+    border: solid black;
   }
   </style>

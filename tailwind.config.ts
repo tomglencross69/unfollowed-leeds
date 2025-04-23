@@ -10,6 +10,9 @@ export default {
     extend: {
       colors: {
         customLinkBlue: '#0000EE',
+      },
+      fontFamily: {
+        'custom-gothic' :['MyCustomGothicFont', 'serif']
       }
     },
   },

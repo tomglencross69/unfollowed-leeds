@@ -2,7 +2,7 @@
     <div class="scroll-container">
       <div class="scroll-text">
         <div class="scroll-inner">
-          <span v-for="n in 10" :key="n">no zuck no ads no doomscroll no endless feed no addiction no problem&#x00A0</span>
+          <span v-for="n in 10" :key="n">no zuck no bezos no ads no doomscroll no endless feed no addiction no problem&#x00A0</span>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
 <style scoped lang="css">
 .scroll-container {
   overflow: hidden;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .scroll-text {
@@ -24,9 +24,11 @@
 }
 
 .scroll-inner {
+ font-size: 1.3rem;
  font-family: 'MyCustomGothicFont', serif;
   display: inline-flex;
-  animation: scroll-loop 30s linear infinite;
+  animation: scroll-loop 60s linear infinite;
+  line-height: 0.9;
 }
 
 @keyframes scroll-loop {
@@ -34,7 +36,7 @@
     transform: translateX(0%);
   }
   to {
-    transform: translateX(-60%);
+    transform: translateX(-50%);
   }
 }
 </style>
