@@ -1,7 +1,7 @@
 <template>
   <ScrollHeader/>
   <PageHeader/>
-    <main class="wrapper">
+  <main class="wrapper">
       <h1 class="title">THE GIG WALL</h1>
       <section class="grid">
         <PosterCard
@@ -34,8 +34,8 @@
   <style scoped>
   .wrapper {
     font-family: "Times New Roman", serif;
-    margin: 2rem;
-    border: solid black;
+    padding: 2rem;
+    border: solid red;
   }
   .grid {
     display: grid;
@@ -49,4 +49,5 @@
     margin-bottom: 2rem;
     border: solid black;
   }
+
   </style>

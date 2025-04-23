@@ -15,16 +15,17 @@
 <style scoped lang="css">
 .scroll-container {
   overflow: hidden;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 .scroll-text {
   display: flex;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .scroll-inner {
- font-size: 1.3rem;
+ font-size: clamp(1.3rem, 1vw, 2rem);
  font-family: 'MyCustomGothicFont', serif;
   display: inline-flex;
   animation: scroll-loop 60s linear infinite;

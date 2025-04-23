@@ -3,7 +3,7 @@
   }
 
    /* added this to ensure viewport cannot be scrolled sideways */
-  body {
+  html, body {
     overflow-x: hidden;
   }
 

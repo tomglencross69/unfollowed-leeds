@@ -1,7 +1,7 @@
 <template>
     <div class="header-wrapper">
         <h1 class="header">
-            UNFOLLOWED><i>Leeds</i>
+            UNFOLLOWED&gt;<wbr><i>Leeds</i>
         </h1>
         <h2 class="subtitle">
             <span>See what's happening. </span>
@@ -22,16 +22,17 @@ font-family: "Times New Roman", serif;
 }
 
 .header {
-font-size: 2.3rem;
+font-size: clamp(2.3rem, 8vw, 9rem);
 color: var(--customLinkBlue);
 padding: 0 0.2rem 0 0.2rem;
 line-height: 0.7;
+word-break: break-word;
 }
 
 .subtitle {
 display: flex;
 flex-direction: column;
-font-size: 1rem;
+font-size: clamp(1rem, 2.8vw, 2rem);
 line-height: 1;
 padding: 0 0 0 0.2rem
 }
