@@ -1,4 +1,5 @@
 <template>
+  <ScrollHeader/>
   <PageHeader/>
     <main class="wrapper">
       <h1 class="title">THE GIG WALL</h1>
