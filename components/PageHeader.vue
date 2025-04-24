@@ -32,7 +32,7 @@ word-break: break-word;
 .subtitle {
 display: flex;
 flex-direction: column;
-font-size: clamp(1rem, 2.8vw, 2rem);
+font-size: clamp(1.2rem, 2.8vw, 2rem);
 line-height: 1;
 padding: 0 0 0 0.2rem
 }

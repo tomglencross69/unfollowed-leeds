@@ -1,8 +1,7 @@
 <template>
   <article class="card">
     <img :src="gig.poster" :alt="gig.title" />
-    <h2>{{ gig.title }}</h2>
-    <p class="date">{{ gig.date }}</p>
+    <!-- <h2>{{ gig.title }}</h2> -->
   </article>
 </template>
 
@@ -19,21 +18,19 @@ defineProps<{
 
 <style scoped>
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-  padding: 1rem;
+  display: block;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* border: 1px solid black; */
+  /* padding: 1rem; */
   font-family: "Times New Roman", serif;
-  background-color: #fefefe;
+  margin: 1rem;
+ 
 }
 .card img {
-  width: 100%;
+  width: 30%;
   height: auto;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
-.card .date {
-  font-size: 0.9rem;
-  color: #555;
-}
+
 </style>

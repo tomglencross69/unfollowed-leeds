@@ -1,17 +1,19 @@
 <template>
+  <div class="top-section">
   <ScrollHeader/>
   <PageHeader/>
+  <h1 class="title">poster area</h1>
   <main class="wrapper">
-      <h1 class="title">THE GIG WALL</h1>
-      <section class="grid">
-        <PosterCard
-          v-for="gig in gigs"
-          :key="gig.slug"
-          :gig="gig"
-        />
-      </section>
-      <NuxtLink to="/account">Account</NuxtLink>
+    <section>
+      <PosterCard
+      v-for="gig in gigs"
+      :key="gig.slug"
+      :gig="gig"
+      />
+    </section>
+    <!-- <NuxtLink to="/account">Account</NuxtLink> -->
     </main>
+  </div>
   </template>
   
   <script setup lang="ts">
@@ -32,22 +34,28 @@
   </script>
   
   <style scoped>
+    .top-section {
+      height:66vh;
+      display: flex;
+      flex-direction: column;
+      border: solid blueviolet
+    }
+    
   .wrapper {
     font-family: "Times New Roman", serif;
-    padding: 2rem;
     border: solid red;
+    /* flex and flex-grow one make the container fill the top section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    border: solid black;
-  }
+
   .title {
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 2rem;
     border: solid black;
   }
+
 
   </style>
