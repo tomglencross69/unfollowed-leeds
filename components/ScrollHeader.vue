@@ -15,6 +15,9 @@
 <style scoped lang="css">
 .scroll-container {
   overflow: hidden;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding-bottom: 0.1rem;
 }
 
 .scroll-text {

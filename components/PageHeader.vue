@@ -19,6 +19,10 @@
 
 .header-wrapper {
 font-family: "Times New Roman", serif;
+flex-shrink: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+
 }
 
 .header {

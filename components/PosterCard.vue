@@ -18,19 +18,15 @@ defineProps<{
 
 <style scoped>
 .card {
-  display: block;
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* border: 1px solid black; */
-  /* padding: 1rem; */
-  font-family: "Times New Roman", serif;
-  margin: 1rem;
- 
+  border: 1px solid black;
+  overflow: hidden; 
+  box-sizing: border-box; 
 }
+
 .card img {
-  width: 30%;
+  width: 100%;
+  max-width: 100px;  /* Control the size of the image */
   height: auto;
-  /* margin-bottom: 1rem; */
 }
 
 </style>
