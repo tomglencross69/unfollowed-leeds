@@ -1,9 +1,10 @@
 <template>
-  <div class="top-section">
+  <div class="desktop-wrapper">
+  <div class="top-section-mobile">
   <ScrollHeader/>
   <PageHeader/>
-  <main class="wrapper">
-    <h1 class="title">poster area</h1>
+  <main class="poster-wrapper">
+    <h1 class="poster-title">poster area</h1>
       <PosterCard class="poster-card"
       v-for="gig in gigs"
       :key="gig.slug"
@@ -12,9 +13,10 @@
     <!-- <NuxtLink to="/account">Account</NuxtLink> -->
     </main>
   </div>
-  <div class="bottom-or-side"> 
+  <div class="bottom-section-mobile"> 
     <NavBar/>
   </div>
+</div>
   </template>
   
   <script setup lang="ts">
@@ -36,7 +38,15 @@
   
   <style scoped>
 
-  .top-section {
+@media (min-width: 768px) {
+  .desktop-wrapper {
+    display: grid
+  
+}
+
+}
+
+  .top-section-mobile {
       height:66vh;
       display: flex;
       flex-direction: column;
@@ -44,11 +54,11 @@
       overflow: hidden;
     }
     
-  .bottom-or-side {
+  .bottom-section-mobile {
     height:33vh;
   }
 
-  .wrapper {
+  .poster-wrapper {
     font-family: "Times New Roman", serif;
     border: solid red;
     /* flex and flex-grow one make the container fill the top section */
@@ -61,7 +71,7 @@
   box-sizing: border-box;
   }
 
-  .title {
+  .poster-title {
     text-align: center;
     font-size: 3rem;
     border: solid black;
