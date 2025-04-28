@@ -1,82 +1,119 @@
 <template>
-  <div class="desktop-wrapper">
-  <div class="top-section-mobile">
-  <ScrollHeader/>
-  <PageHeader/>
-  <main class="poster-wrapper">
-    <h1 class="poster-title">poster area</h1>
-      <PosterCard class="poster-card"
-      v-for="gig in gigs"
-      :key="gig.slug"
-      :gig="gig"
-      />
-    <!-- <NuxtLink to="/account">Account</NuxtLink> -->
-    </main>
-  </div>
-  <div class="bottom-section-mobile"> 
-    <NavBar/>
-  </div>
-</div>
-  </template>
-  
-  <script setup lang="ts">
-  const gigs = [
-    {
-      title: "The Swans at The Haunt",
-      date: "2025-06-01",
-      poster: "/posters/poster1.jpg",
-      slug: "swans-haunt"
-    },
-    {
-      title: "Tropical Goth @ Nowhere Bar",
-      date: "2025-04-30",
-      poster: "/posters/poster2.jpg",
-      slug: "tropical-goth"
-    }
-  ]
-  </script>
-  
-  <style scoped>
-
-@media (min-width: 768px) {
-  .desktop-wrapper {
-    display: grid
-  
-}
-
-}
-
-  .top-section-mobile {
-      height:66vh;
-      display: flex;
-      flex-direction: column;
-      border: solid blueviolet;
-      overflow: hidden;
-    }
+  <div class="app-wrapper">
+    <!-- Headers are always at the top, full width -->
+    <ScrollHeader class="scroll-header"/>
+    <PageHeader class="page-header"/>
     
-  .bottom-section-mobile {
-    height:33vh;
+    <!-- Main content area has different layouts for mobile vs desktop -->
+    <div class="content-area">
+      <!-- Left navbar for desktop -->
+      <NavBar class="desktop-navbar"/>
+      
+      <!-- Poster area -->
+      <main class="poster-wrapper">
+        <h1 class="poster-title">poster area</h1>
+        <PosterCard class="poster-card"
+          v-for="gig in gigs"
+          :key="gig.slug"
+          :gig="gig"
+        />
+      </main>
+    </div>
+    
+    <!-- Bottom navbar for mobile only -->
+    <NavBar class="mobile-navbar"/>
+  </div>
+</template>
+  
+<script setup lang="ts">
+const gigs = [
+  {
+    title: "The Swans at The Haunt",
+    date: "2025-06-01",
+    poster: "/posters/poster1.jpg",
+    slug: "swans-haunt"
+  },
+  {
+    title: "Tropical Goth @ Nowhere Bar",
+    date: "2025-04-30",
+    poster: "/posters/poster2.jpg",
+    slug: "tropical-goth"
   }
+]
+</script>
+  
+<style scoped>
+/* Common styles */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  .poster-wrapper {
-    font-family: "Times New Roman", serif;
-    border: solid red;
-    /* flex and flex-grow one make the container fill the top section */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    overflow-y: auto;
+.scroll-header, .page-header {
+  width: 100%;
+}
+
+.poster-wrapper {
+  font-family: "Times New Roman", serif;
+  border: solid red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
   box-sizing: border-box;
+}
+
+.poster-title {
+  text-align: center;
+  font-size: 3rem;
+  border: solid black;
+}
+
+/* Mobile layout (default) */
+.content-area {
+  height: 66vh;
+  display: flex;
+  flex-direction: column;
+  border: solid blueviolet;
+  overflow: hidden;
+}
+
+.desktop-navbar {
+  display: none; /* Hide on mobile */
+}
+
+.mobile-navbar {
+  height: 33vh;
+  display: block;
+}
+
+.poster-wrapper {
+  flex-grow: 1;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .content-area {
+    flex-direction: row;
+    flex-grow: 1;
+    height: auto;
   }
-
-  .poster-title {
-    text-align: center;
-    font-size: 3rem;
-    border: solid black;
+  
+  .desktop-navbar {
+    display: block;
+    width: 25%;
+    border: solid green;
   }
-
-
-
-  </style>
+  
+  .mobile-navbar {
+    display: none; /* Hide on desktop */
+  }
+  
+  .poster-wrapper {
+    width: 75%;
+    height: 100%;
+  }
+}
+</style>
