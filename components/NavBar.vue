@@ -33,14 +33,17 @@ line-height: 1.1;
  }
 
 .search-wrapper{
-padding: 0.5rem 0 0.5rem 1rem
+margin: 0.3rem 0 0.5rem 1rem;
+border: solid ;
 }
 
 .newly-posted-wrapper{
-    padding: 0.5rem 0 0.5rem 1rem
+    margin: 0.3rem 0 0.5rem 1rem;
+    border: solid ;
 }
 
 .account-wrapper{
-    padding: 0.5rem 0 0.5rem 1rem
+    margin: 0.3rem 0 0.5rem 1rem;
+    border: solid ;
 }
 </style>
