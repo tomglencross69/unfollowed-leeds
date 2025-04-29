@@ -28,8 +28,7 @@ flex-shrink: 0;
 .header {
 font-size: clamp(2.3rem, 8vw, 9rem);
 color: var(--customLinkBlue);
-padding: 0 0.2rem 0 0.2rem;
-line-height: 0.7;
+line-height: 0.75;
 word-break: break-word;
 }
 

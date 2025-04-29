@@ -17,7 +17,6 @@
   overflow: hidden;
   flex-shrink: 0;
   box-sizing: border-box;
-  padding-bottom: 0.1rem;
 }
 
 .scroll-text {
@@ -27,11 +26,11 @@
 }
 
 .scroll-inner {
- font-size: clamp(1.3rem, 1vw, 2rem);
+ font-size: clamp(1.3rem, 2vw, 2rem);
  font-family: 'MyCustomGothicFont', serif;
   display: inline-flex;
   animation: scroll-loop 60s linear infinite;
-  line-height: 0.9;
+  line-height: 1.2;
 }
 
 @keyframes scroll-loop {

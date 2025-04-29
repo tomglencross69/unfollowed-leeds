@@ -5,6 +5,8 @@
    /* added this to ensure viewport cannot be scrolled sideways */
   html, body {
     overflow-x: hidden;
+    margin: 0rem 0.2rem 0.2rem 0.2rem;
+  
   }
 
   @font-face {

@@ -30,20 +30,21 @@
     flex-direction: column;
 font-family: "Times New Roman", serif;
 line-height: 1.1;
+font-size: clamp(1rem, 2vw, 2rem);
  }
 
 .search-wrapper{
-margin: 0.3rem 0 0.5rem 1rem;
+margin: 0.3rem 0 0.5rem 0.5rem;
 border: solid ;
 }
 
 .newly-posted-wrapper{
-    margin: 0.3rem 0 0.5rem 1rem;
+    margin: 0.3rem 0 0.5rem 0.5rem;
     border: solid ;
 }
 
 .account-wrapper{
-    margin: 0.3rem 0 0.5rem 1rem;
+    margin: 0.3rem 0 0.5rem 0.5rem;
     border: solid ;
 }
 </style>
