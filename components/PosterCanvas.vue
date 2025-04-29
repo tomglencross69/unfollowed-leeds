@@ -1,6 +1,11 @@
 <!-- ZoomablePosterCanvas.vue -->
 <template>
-    <div class="zoomable-canvas-container">
+    <div 
+      class="zoomable-canvas-container" 
+      ref="containerRef"
+      @mousedown="startPan"
+      @wheel.prevent="handleZoom"
+    >
       <!-- Zoom controls -->
       <div class="zoom-controls">
         <button @click="zoomIn" class="zoom-button">+</button>
@@ -12,12 +17,7 @@
       <div 
         class="canvas-area"
         ref="canvasRef"
-        @mousedown="startPan"
-        @wheel.prevent="handleZoom"
-        :style="{
-          transform: `scale(${scale})`,
-          cursor: isPanning ? 'grabbing' : 'grab'
-        }"
+        :style="canvasStyle"
       >
         <!-- This is where your existing poster content goes -->
         <slot></slot>
@@ -26,9 +26,10 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { ref, onMounted, onUnmounted, computed } from 'vue';
   
   // Canvas element reference
+  const containerRef = ref(null);
   const canvasRef = ref(null);
   
   // Zoom and pan state
@@ -43,25 +44,27 @@
   const MAX_SCALE = 3;
   const ZOOM_SPEED = 0.1;
   
+  // Computed style for canvas
+  const canvasStyle = computed(() => ({
+    transform: `translate(${panPosition.value.x}px, ${panPosition.value.y}px) scale(${scale.value})`,
+  }));
+  
   // Zoom functions
   const zoomIn = () => {
     if (scale.value < MAX_SCALE) {
       scale.value = Math.min(scale.value + ZOOM_SPEED, MAX_SCALE);
-      updateCanvasTransform();
     }
   };
   
   const zoomOut = () => {
     if (scale.value > MIN_SCALE) {
       scale.value = Math.max(scale.value - ZOOM_SPEED, MIN_SCALE);
-      updateCanvasTransform();
     }
   };
   
   const resetView = () => {
     scale.value = 1;
     panPosition.value = { x: 0, y: 0 };
-    updateCanvasTransform();
   };
   
   // Wheel event handler for zooming
@@ -71,34 +74,44 @@
     
     // Only update if the scale changes
     if (newScale !== scale.value) {
-      // Get cursor position relative to canvas
-      const rect = canvasRef.value.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
+      // Get container dimensions
+      const container = containerRef.value;
+      const rect = container.getBoundingClientRect();
+      
+      // Calculate mouse position relative to container center
+      const mouseX = event.clientX - rect.left - rect.width / 2;
+      const mouseY = event.clientY - rect.top - rect.height / 2;
       
       // Calculate new scale and adjust position to zoom toward cursor
       const scaleFactor = newScale / scale.value;
       
-      // Calculate new position to zoom toward cursor
-      const newX = panPosition.value.x + ((mouseX - rect.width/2) * (1 - scaleFactor));
-      const newY = panPosition.value.y + ((mouseY - rect.height/2) * (1 - scaleFactor));
+      // Update pan position to keep the point under the cursor in the same position
+      panPosition.value = {
+        x: panPosition.value.x + mouseX * (1 - scaleFactor),
+        y: panPosition.value.y + mouseY * (1 - scaleFactor)
+      };
       
-      // Update scale and position
+      // Update scale
       scale.value = newScale;
-      panPosition.value = { x: newX, y: newY };
-      
-      // Update canvas transform
-      updateCanvasTransform();
     }
   };
   
   // Pan related functions
   const startPan = (event) => {
+    // Skip if we're clicking a button or other interactive element
+    if (event.target.closest('button')) return;
     if (event.button !== 0) return; // Only left mouse button
+    
+    event.preventDefault(); // Prevent text selection during drag
     
     isPanning.value = true;
     startPoint.value = { x: event.clientX, y: event.clientY };
     lastPoint.value = { x: panPosition.value.x, y: panPosition.value.y };
+    
+    // Change cursor to indicate grabbing state
+    if (containerRef.value) {
+      containerRef.value.style.cursor = 'grabbing';
+    }
     
     document.addEventListener('mousemove', onPan);
     document.addEventListener('mouseup', endPan);
@@ -114,26 +127,26 @@
       x: lastPoint.value.x + dx,
       y: lastPoint.value.y + dy
     };
-    
-    updateCanvasTransform();
   };
   
   const endPan = () => {
     isPanning.value = false;
+    
+    // Reset cursor
+    if (containerRef.value) {
+      containerRef.value.style.cursor = 'grab';
+    }
+    
     document.removeEventListener('mousemove', onPan);
     document.removeEventListener('mouseup', endPan);
   };
   
-  // Update canvas transform based on scale and position
-  const updateCanvasTransform = () => {
-    const canvas = canvasRef.value;
-    if (!canvas) return;
-    
-    canvas.style.transform = `scale(${scale.value})`;
-    canvas.style.transformOrigin = 'center center';
-    canvas.style.left = `${panPosition.value.x}px`;
-    canvas.style.top = `${panPosition.value.y}px`;
-  };
+  // Initialize and set up on mount
+  onMounted(() => {
+    if (containerRef.value) {
+      containerRef.value.style.cursor = 'grab';
+    }
+  });
   
   // Clean up event listeners
   onUnmounted(() => {
@@ -149,10 +162,13 @@
     height: 100%;
     overflow: hidden;
     background-color: #f0f0f0; /* Light grey background */
-background-image: radial-gradient(circle, #ccc 1px, transparent 1px);
-background-size: 20px 20px;
+    background-image: radial-gradient(circle, #ccc 1px, transparent 1px);
+    background-size: 20px 20px;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2); /* Inner shadow effect */
     border-radius: 8px;
+    /* Important - ensures the whole container can receive events */
+    user-select: none;
+    touch-action: none;
   }
   
   .zoom-controls {
@@ -184,45 +200,45 @@ background-size: 20px 20px;
   
   .canvas-area {
     position: absolute;
-    transform-origin: center center;
-    transition: transform 0.1s ease-out;
-    min-width: 100%;
-    min-height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     padding: 50px;
     gap: 20px;
+    transform-origin: center center;
+    will-change: transform;
+    /* These ensure the canvas doesn't interfere with its own events */
+    pointer-events: none;
+
   }
   
-  /* This ensures that the slot content (your posters) will be displayed properly */
+  /* Re-enable pointer events for children inside the canvas */
   .canvas-area > * {
     transition: transform 0.2s ease;
     position: relative;
+    pointer-events: auto;
   }
   
-  /* Style for pushpins to make posters look pinned to the board */
-  .canvas-area > *::before,
-  .canvas-area > *::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #e74c3c;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-  
-  .canvas-area > *::before {
-    top: 10px;
-    left: 10px;
-  }
-  
-  .canvas-area > *::after {
-    top: 10px;
-    right: 10px;
-    background-color: #3498db;
-  }
+.canvas-area > *:nth-child(3n) {
+  transform: rotate(-2deg);
+}
+
+.canvas-area > *:nth-child(3n + 2) {
+  transform: rotate(1.5deg);
+}
+
+.canvas-area > *:nth-child(3n + 1) {
+  transform: rotate(-1.2deg);
+}
+
+/* Straighten on hover */
+.canvas-area > *:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 2;
+}
   </style>
