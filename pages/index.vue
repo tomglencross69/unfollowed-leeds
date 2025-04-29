@@ -10,14 +10,14 @@
       <NavBar class="desktop-navbar"/>
       
       <!-- Poster area -->
-      <main class="poster-wrapper">
+      <PosterCanvas class="poster-canvas">
         <h1 class="poster-title">poster area</h1>
         <PosterCard class="poster-card"
           v-for="gig in gigs"
           :key="gig.slug"
           :gig="gig"
         />
-      </main>
+      </PosterCanvas>
     </div>
     
     <!-- Bottom navbar for mobile only -->
@@ -54,7 +54,7 @@ const gigs = [
   width: 100%;
 }
 
-.poster-wrapper {
+.poster-canvas {
   font-family: "Times New Roman", serif;
   border: solid red;
   display: flex;
