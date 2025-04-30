@@ -1,75 +1,56 @@
-# Nuxt Minimal Starter
+# 🖼️ *Unfollowed Leeds* 
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A **minimalist, image-driven, community event poster pinboard** built with **Vue**, **Nuxt.js**, and **TypeScript**.  
+Designed as an **anti-doomscroll**, **anti-social-media** space — a place to admire and upload posters, then move on.
 
-## Setup
+> No ads, no algorithms, no pressure. Just posters.
 
-Make sure to install dependencies:
+---
+
+## Getting Started
+
+### 1. Install dependencies
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### 2. Start the development server
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Once running, open your browser at:
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+http://localhost:3000
 ```
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## the project
 
-# pnpm
-pnpm preview
+This app is currently in development. Its purpose is to create a space that feels calm, focused, and visually rich — a break from endless feeds and noisy timelines.
 
-# yarn
-yarn preview
+### aspirations
 
-# bun
-bun run preview
-```
+- A **calm and accessible** poster-browsing experience  
+- Celebrate **poster design** and simplicity over engagement metrics  
+- Built with **Nuxt.js** and **TypeScript** for structure and scalability  
+- Planned features: **user authentication**, **database integration**  
+- No social feeds, no ads, no endless scroll  
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## links
+
+- **Figma Design Plan**: [Plan, wireframes and component tree](https://www.figma.com/board/C3asCTTS0xwlZ5bWy0zKGs/leeds-posters?node-id=0-1&t=PbL2mBbD74zWDHQZ-1)
+
+---
+
+> **See what's happening. Add your own event poster. Leave and get on with your life..**
+
+An alternative to addictive content platforms and a homage to Web 2.0. 
+
+---
