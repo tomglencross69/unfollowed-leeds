@@ -38,6 +38,24 @@ const gigs = [
     date: "2025-04-30",
     poster: "/posters/poster2.jpg",
     slug: "tropical-goth"
+  },
+  {
+    title: "gig number 3",
+    date: "2025-04-30",
+    poster: "/posters/poster3.jpg",
+    slug: "gig-3"
+  },
+  {
+    title: "gig number 4",
+    date: "2025-04-30",
+    poster: "/posters/poster4.jpg",
+    slug: "gig-4"
+  },
+  {
+    title: "gig number 5",
+    date: "2025-04-30",
+    poster: "/posters/poster5.jpg",
+    slug: "gig-5"
   }
 ]
 </script>

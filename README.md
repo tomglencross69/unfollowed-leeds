@@ -1,4 +1,4 @@
-# 🖼️ *Unfollowed Leeds* 
+# 🖼️ *UNFOLLOWED>Leeds* 
 
 A **minimalist, image-driven, community event poster pinboard** built with **Vue**, **Nuxt.js**, and **TypeScript**.  
 Designed as an **anti-doomscroll**, **anti-social-media** space — a place to admire and upload posters, then move on.
@@ -7,7 +7,7 @@ Designed as an **anti-doomscroll**, **anti-social-media** space — a place to a
 
 ---
 
-## Getting Started
+## view the app in development 
 
 ### 1. Install dependencies
 
@@ -37,7 +37,7 @@ This app is currently in development. Its purpose is to create a space that feel
 
 - A **calm and accessible** poster-browsing experience  
 - Celebrate **poster design** and simplicity over engagement metrics  
-- Built with **Nuxt.js** and **TypeScript** for structure and scalability  
+- Built with **Vue**, **Nuxt.js** and **TypeScript** for structure and scalability  
 - Planned features: **user authentication**, **database integration**  
 - No social feeds, no ads, no endless scroll  
 
@@ -45,7 +45,7 @@ This app is currently in development. Its purpose is to create a space that feel
 
 ## links
 
-- **Figma Design Plan**: [Plan, wireframes and component tree](https://www.figma.com/board/C3asCTTS0xwlZ5bWy0zKGs/leeds-posters?node-id=0-1&t=PbL2mBbD74zWDHQZ-1)
+- **Figma**: [Plan, wireframes and component tree](https://www.figma.com/board/C3asCTTS0xwlZ5bWy0zKGs/leeds-posters?node-id=0-1&t=PbL2mBbD74zWDHQZ-1)
 
 ---
 
