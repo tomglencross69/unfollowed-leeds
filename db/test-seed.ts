@@ -2,8 +2,6 @@ import db from './test-connection'
 import format from 'pg-format'
 import {testUsersData} from './testdata/testUsersData'
 import {testPostersData} from './testdata/testPostersData'
-import type { Poster } from '~/types/poster'
-import type { User } from '~/types/user'
 
 const testSeed = async () => {
     try {
@@ -58,17 +56,73 @@ const testSeed = async () => {
         //inserts users data
         const insertUsersQuery = format(
             `INSERT INTO users (user_uid, username, email) VALUES %L RETURNING *;`,
-            testUsersData.map(({userUID, username, email}) => [userUID, username, email])
+            testUsersData.map(({userUID, 
+                username, 
+                email}) => [userUID, username, email])
         )
         const { rows: insertedUsers } = await db.query(insertUsersQuery)
 
         //inserts posters data NEED TO FINISH THIS!!
         const insertPostersQuery = format(
-            `INSERT INTO posters ()`
-        )
+            `INSERT INTO posters (uploadUserId, uploadUserUID, uploadUsername, updatedAt, posterImageURL, slug, posterImageAltText, eventName, eventVenueName, eventLocationName, eventLocationAddress, eventLocationLatitude, eventLocationLongitude, eventTime, eventText, eventCategory, posterDeletionDate, isExpired, posterX, posterY, isPublished, tags)
+            VALUES %L RETURNING *;`,
+            testPostersData.map(({
+                uploadUserId,
+                uploadUserUID,
+                uploadUsername,
+                updatedAt,
+                posterImageURL,
+                slug,
+                posterImageAltText,
+                eventName,
+                eventVenueName,
+                eventLocation: {
+                  name: eventLocationName,
+                  address: eventLocationAddress,
+                  latitude: eventLocationLatitude,
+                  longitude: eventLocationLongitude
+                },
+                eventTime,
+                eventText,
+                eventCategory,
+                posterDeletionDate,
+                isExpired,
+                posterX,
+                posterY,
+                isPublished,
+                tags
+              }) => [
+                uploadUserId,
+                uploadUserUID,
+                uploadUsername,
+                updatedAt,
+                posterImageURL,
+                slug,
+                posterImageAltText,
+                eventName,
+                eventVenueName,
+                eventLocationName,
+                eventLocationAddress,
+                eventLocationLatitude,
+                eventLocationLongitude,
+                eventTime,
+                eventText,
+                eventCategory,
+                posterDeletionDate,
+                isExpired,
+                posterX,
+                posterY,
+                isPublished,
+                tags
+              ])
+        );
+        const {rows: insertedPosters} = await db.query(insertPostersQuery)
 
-
+        console.log('Seeding completed successfully!!!')
+        
     } catch (error) {
         console.error('Seeeding error:', error)
     }
 }
+
+export default testSeed
