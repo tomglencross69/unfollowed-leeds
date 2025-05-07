@@ -1,13 +1,15 @@
 import type { Poster } from '@/types/poster'
 
-const testPostersData: Poster[] = [
+export const testPostersData: Poster[] = [
     {
-        posterId: 1,
+        // posterId: 1,
         uploadUserId: 1,
+        uploadUserUID: "test1",
         uploadUsername: "TestUsername",
-        createdAt: "2024-05-06T12:00:00.000Z",
+        // createdAt: "2024-05-06T12:00:00.000Z", COMMENTED OUT AS IT WILL BE ASSIGNED TIMESTAMP IN SQL TABLE
         updatedAt: "2024-05-06T12:30:00.000Z",
         posterImageURL: "https://res.cloudinary.com/dp98q16wp/image/upload/v1742659468/hfmynfjcht5xlx4z76r7.png",
+        slug: "test-party",
         posterImageAltText: "Event poster for a test event",
         eventName: "Test Party",
         eventVenueName: "Wharf Chambers",
@@ -21,6 +23,7 @@ const testPostersData: Poster[] = [
         eventText: "This is a test event.",
         eventCategory: "gig",
         posterDeletionDate: "2024-05-14T22:30:00.000Z",
+        isExpired: false,
         posterX: 0,
         posterY: 0,
         isPublished: true,
@@ -28,3 +31,4 @@ const testPostersData: Poster[] = [
     
     }
 ]
+
