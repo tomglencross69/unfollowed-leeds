@@ -1,4 +1,4 @@
-# 🖼️ *UNFOLLOWED>Leeds* 
+# 🖼️ *UNFOLLOWED\>Leeds* 
 
 A **minimalist, image-driven, community event poster pinboard** built with **Vue**, **Nuxt.js**, and **TypeScript**.  
 Designed as an **anti-doomscroll**, **anti-social-media** space — a place to admire and upload posters, then move on.
