@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "setup-test-db": "psql -f ./db/test-setup.sql",
+    "test-seed": "node ./db/test-run-seed.js"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.13.2",
