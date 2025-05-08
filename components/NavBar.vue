@@ -12,7 +12,7 @@
         <p>already happened</p>
     </div>
     <div class="account-wrapper">
-        <p>add poster</p>
+        <NuxtLink to="/add-poster">add poster</NuxtLink>
         <p>sign-up / login</p>
         <p>about / faq</p>
     </div>
