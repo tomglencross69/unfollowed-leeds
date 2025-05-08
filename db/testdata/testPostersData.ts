@@ -5,7 +5,7 @@ export const testPostersData: Poster[] = [
         // posterId: 1,
         uploadUserId: 1,
         uploadUserUID: "test1",
-        uploadUsername: "TestUsername",
+        uploadUsername: "testusername",
         // createdAt: "2024-05-06T12:00:00.000Z", COMMENTED OUT AS IT WILL BE ASSIGNED TIMESTAMP IN SQL TABLE
         updatedAt: "2024-05-06T12:30:00.000Z",
         posterImageURL: "https://res.cloudinary.com/dp98q16wp/image/upload/v1742659468/hfmynfjcht5xlx4z76r7.png",

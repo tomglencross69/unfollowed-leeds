@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "setup-test-db": "psql -f ./db/test-setup.sql",
-    "test-seed": "node ./db/test-run-seed.js"
+    "test-seed": "tsx ./db/test-run-seed.ts"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.13.2",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/pg": "^8.15.0",
     "@types/pg-format": "^1.0.5",
-    "@types/vue": "^1.0.31"
+    "@types/vue": "^1.0.31",
+    "tsx": "^4.19.4"
   }
 }

@@ -1,10 +1,10 @@
 import testSeed from './test-seed'
 import db from './test-connection'
 
-const runTestSeed = async () => {
+const testRunSeed = async () => {
     try {
       await testSeed()
-      console.log('Seeding complete in run-test-seed!')
+      console.log('Seeding successful in run-test-seed!')
     } catch (err) {
       console.error('Seeding error in run-test-seed:', err);
     } finally {
@@ -13,4 +13,4 @@ const runTestSeed = async () => {
     }
   };
   
-  runTestSeed();
+  testRunSeed();

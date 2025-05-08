@@ -14,7 +14,7 @@ const testSeed = async () => {
         //users table
         await db.query(`
             CREATE TABLE users(
-            user_id INTEGER SERIAL PRIMARY KEY,
+            user_id SERIAL PRIMARY KEY,
             user_uid VARCHAR UNIQUE NOT NULL,
             username VARCHAR UNIQUE NOT NULL,
             email VARCHAR UNIQUE NOT NULL,
@@ -25,7 +25,7 @@ const testSeed = async () => {
         //posters table
         await db.query(`
             CREATE TABLE posters(
-            poster_id INTEGER SERIAL PRIMARY KEY,
+            poster_id SERIAL PRIMARY KEY,
             uploadUserId INT REFERENCES users(user_id) ON DELETE CASCADE,
             uploadUserUID TEXT NOT NULL REFERENCES users(user_uid) ON DELETE CASCADE,
             uploadUsername TEXT NOT NULL REFERENCES users(username) ON DELETE CASCADE,
@@ -52,8 +52,8 @@ const testSeed = async () => {
             );
         `)
 
-        console.log('Inserting users data...')
         //inserts users data
+        console.log('Inserting users data...')
         const insertUsersQuery = format(
             `INSERT INTO users (user_uid, username, email) VALUES %L RETURNING *;`,
             testUsersData.map(({userUID, 
@@ -62,7 +62,8 @@ const testSeed = async () => {
         )
         const { rows: insertedUsers } = await db.query(insertUsersQuery)
 
-        //inserts posters data NEED TO FINISH THIS!!
+        //inserts posters data
+        console.log('Inserting posters data...')
         const insertPostersQuery = format(
             `INSERT INTO posters (uploadUserId, uploadUserUID, uploadUsername, updatedAt, posterImageURL, slug, posterImageAltText, eventName, eventVenueName, eventLocationName, eventLocationAddress, eventLocationLatitude, eventLocationLongitude, eventTime, eventText, eventCategory, posterDeletionDate, isExpired, posterX, posterY, isPublished, tags)
             VALUES %L RETURNING *;`,
@@ -113,15 +114,18 @@ const testSeed = async () => {
                 posterX,
                 posterY,
                 isPublished,
-                tags
+                // tags
+                `{${tags.join(',')}}`
               ])
         );
+        
         const {rows: insertedPosters} = await db.query(insertPostersQuery)
 
         console.log('Seeding completed successfully!!!')
         
     } catch (error) {
-        console.error('Seeeding error:', error)
+        console.error('Seeeding error in test-seed:', error)
+        throw error;
     }
 }
 
