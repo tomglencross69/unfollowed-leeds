@@ -1,19 +1,19 @@
 <template>
   <article class="card">
-    <img :src="gig.poster" :alt="gig.title" />
-    <!-- <h2>{{ gig.title }}</h2> -->
+    <img :src="poster.posterimageurl" :alt="poster.title" />
+    <h1>hello</h1>
   </article>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  gig: {
-    title: string
-    poster: string
-    date: string
-    slug: string
+  poster: {
+    posterImageURL: string
+    eventName: string
+    [key: string]: any  // optional: allows other fields without strict typing
   }
 }>()
+
 </script>
 
 <style scoped>

@@ -11,11 +11,11 @@
       
       <!-- Poster area -->
       <PosterCanvas class="poster-canvas">
-        <h1 class="poster-title">poster area</h1>
+        <!-- <h1 class="poster-title">poster area</h1> -->
         <PosterCard class="poster-card"
-          v-for="gig in gigs"
-          :key="gig.slug"
-          :gig="gig"
+          v-for="poster in posters"
+          :key="poster.slug"
+          :poster="poster"
         />
       </PosterCanvas>
     </div>
@@ -26,38 +26,44 @@
 </template>
   
 <script setup lang="ts">
-const gigs = [
-  {
-    title: "The Swans at The Haunt",
-    date: "2025-06-01",
-    poster: "/posters/poster1.jpg",
-    slug: "swans-haunt"
-  },
-  {
-    title: "Tropical Goth @ Nowhere Bar",
-    date: "2025-04-30",
-    poster: "/posters/poster2.jpg",
-    slug: "tropical-goth"
-  },
-  {
-    title: "gig number 3",
-    date: "2025-04-30",
-    poster: "/posters/poster3.jpg",
-    slug: "gig-3"
-  },
-  {
-    title: "gig number 4",
-    date: "2025-04-30",
-    poster: "/posters/poster4.jpg",
-    slug: "gig-4"
-  },
-  {
-    title: "gig number 5",
-    date: "2025-04-30",
-    poster: "/posters/poster5.jpg",
-    slug: "gig-5"
-  }
-]
+
+const {data: posters, error} = await useAsyncData('posters', () => $fetch('/api/posters'))
+
+console.log(posters.value, "posters value in index homepage")
+
+//GIGS TEST DATA
+// const gigs = [
+//   {
+//     title: "The Swans at The Haunt",
+//     date: "2025-06-01",
+//     poster: "/posters/poster1.jpg",
+//     slug: "swans-haunt"
+//   },
+//   {
+//     title: "Tropical Goth @ Nowhere Bar",
+//     date: "2025-04-30",
+//     poster: "/posters/poster2.jpg",
+//     slug: "tropical-goth"
+//   },
+//   {
+//     title: "gig number 3",
+//     date: "2025-04-30",
+//     poster: "/posters/poster3.jpg",
+//     slug: "gig-3"
+//   },
+//   {
+//     title: "gig number 4",
+//     date: "2025-04-30",
+//     poster: "/posters/poster4.jpg",
+//     slug: "gig-4"
+//   },
+//   {
+//     title: "gig number 5",
+//     date: "2025-04-30",
+//     poster: "/posters/poster5.jpg",
+//     slug: "gig-5"
+//   }
+// ]
 </script>
   
 <style scoped>
